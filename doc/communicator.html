@@ -1,0 +1,147 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module communicator</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>communicator</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/daniel/Dropbox/Experiments/OpenSesame Files/Sanne/communicator.py">/home/daniel/Dropbox/Experiments/OpenSesame Files/Sanne/communicator.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="openexp.html">openexp</a><br>
+</td><td width="25%" valign=top><a href="select.html">select</a><br>
+</td><td width="25%" valign=top><a href="socket.html">socket</a><br>
+</td><td width="25%" valign=top><a href="threading.html">threading</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="threading.html#Thread">threading.Thread</a>(<a href="threading.html#_Verbose">threading._Verbose</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="communicator.html#Chatbox">Chatbox</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Chatbox">class <strong>Chatbox</strong></a>(<a href="threading.html#Thread">threading.Thread</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Establishes&nbsp;a&nbsp;connection&nbsp;between&nbsp;two&nbsp;computers&nbsp;and&nbsp;enables&nbsp;them&nbsp;to&nbsp;send&nbsp;simple&nbsp;string&nbsp;messages&nbsp;to&nbsp;each&nbsp;other.<br>
+Instances&nbsp;of&nbsp;this&nbsp;class&nbsp;run&nbsp;as&nbsp;separate&nbsp;processes&nbsp;(threads)&nbsp;in&nbsp;the&nbsp;background&nbsp;and&nbsp;thus&nbsp;continuously&nbsp;listen&nbsp;for&nbsp;incoming&nbsp;messages.<br>
+Messages&nbsp;in&nbsp;the&nbsp;messagelist&nbsp;are&nbsp;stored&nbsp;as&nbsp;(message,origin)&nbsp;tuples,&nbsp;where&nbsp;message&nbsp;is&nbsp;the&nbsp;message&nbsp;string&nbsp;and&nbsp;origin&nbsp;is&nbsp;the&nbsp;IP&nbsp;address&nbsp;of&nbsp;the&nbsp;pc&nbsp;that&nbsp;sent&nbsp;the&nbsp;message<br>
+(use&nbsp;"local"&nbsp;as&nbsp;origin&nbsp;to&nbsp;indicate&nbsp;sent&nbsp;messages,&nbsp;if&nbsp;you&nbsp;want&nbsp;to&nbsp;store&nbsp;these&nbsp;in&nbsp;messageList&nbsp;as&nbsp;well).<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="communicator.html#Chatbox">Chatbox</a></dd>
+<dd><a href="threading.html#Thread">threading.Thread</a></dd>
+<dd><a href="threading.html#_Verbose">threading._Verbose</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Chatbox-__init__"><strong>__init__</strong></a>(self, role, addr<font color="#909090">=''</font>, port<font color="#909090">=5001</font>, receivedMessageList<font color="#909090">=[]</font>, sentMessageList<font color="#909090">=[]</font>, kbinput<font color="#909090">=None</font>)</dt><dd><tt>Constructor&nbsp;-&nbsp;called&nbsp;when&nbsp;instance&nbsp;of&nbsp;class&nbsp;is&nbsp;created<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;role&nbsp;(str):&nbsp;Allowed&nbsp;values:&nbsp;{"server","client"}.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Indicate&nbsp;whether&nbsp;this&nbsp;computer&nbsp;is&nbsp;a&nbsp;"server"&nbsp;(i.e.&nbsp;listens&nbsp;for&nbsp;incoming&nbsp;connections&nbsp;from&nbsp;other&nbsp;computers)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;a&nbsp;"client"&nbsp;(i.e.&nbsp;connects&nbsp;to&nbsp;another&nbsp;computer&nbsp;that&nbsp;is&nbsp;listening&nbsp;for&nbsp;connections).<br>
+&nbsp;<br>
+Kwars:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;addr&nbsp;(str):&nbsp;The&nbsp;address&nbsp;of&nbsp;the&nbsp;computer&nbsp;to&nbsp;connect&nbsp;to&nbsp;(client&nbsp;only,&nbsp;empty&nbsp;when&nbsp;running&nbsp;as&nbsp;"server")&nbsp;(default&nbsp;=&nbsp;"")<br>
+&nbsp;&nbsp;&nbsp;&nbsp;port&nbsp;(int):&nbsp;The&nbsp;port&nbsp;to&nbsp;either&nbsp;listen&nbsp;to&nbsp;(in&nbsp;server&nbsp;mode)&nbsp;or&nbsp;connect&nbsp;to&nbsp;at&nbsp;the&nbsp;remote&nbsp;machine&nbsp;(in&nbsp;client&nbsp;mode)&nbsp;(default&nbsp;=&nbsp;5001)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;messageList&nbsp;(list):&nbsp;The&nbsp;reference&nbsp;to&nbsp;the&nbsp;list&nbsp;to&nbsp;append&nbsp;the&nbsp;received&nbsp;messages&nbsp;to&nbsp;(default&nbsp;=&nbsp;[]&nbsp;(i.e.&nbsp;a&nbsp;new&nbsp;list)).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;kbinput&nbsp;(openexp.keyboard):&nbsp;Optional&nbsp;reference&nbsp;to&nbsp;an&nbsp;openexp&nbsp;keyboard&nbsp;object&nbsp;that&nbsp;is&nbsp;used&nbsp;to&nbsp;break&nbsp;from&nbsp;'waiting&nbsp;for&nbsp;connection'&nbsp;loop&nbsp;if&nbsp;Escape&nbsp;is&nbsp;pressed&nbsp;in&nbsp;OpenSesame</tt></dd></dl>
+
+<dl><dt><a name="Chatbox-get_addr"><strong>get_addr</strong></a>(self)</dt><dd><tt>Returns:<br>
+&nbsp;&nbsp;&nbsp;str.&nbsp;the&nbsp;adress&nbsp;of&nbsp;the&nbsp;remote&nbsp;machine&nbsp;(in&nbsp;client&nbsp;mode)&nbsp;or&nbsp;the&nbsp;address&nbsp;of&nbsp;the&nbsp;local&nbsp;machine&nbsp;(in&nbsp;server&nbsp;mode,&nbsp;probably&nbsp;an&nbsp;empty&nbsp;string)</tt></dd></dl>
+
+<dl><dt><a name="Chatbox-get_and_clear_received_messages"><strong>get_and_clear_received_messages</strong></a>(self)</dt><dd><tt>Same&nbsp;as&nbsp;'get_received_messages'&nbsp;but&nbsp;also&nbsp;clears&nbsp;the&nbsp;received&nbsp;messages&nbsp;list<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;list.&nbsp;A&nbsp;list&nbsp;of&nbsp;received&nbsp;messages&nbsp;(i.e.&nbsp;messages&nbsp;of&nbsp;which&nbsp;the&nbsp;origin&nbsp;!=&nbsp;"local")</tt></dd></dl>
+
+<dl><dt><a name="Chatbox-get_messagelist"><strong>get_messagelist</strong></a>(self)</dt><dd><tt>Returns:<br>
+&nbsp;&nbsp;&nbsp;list.&nbsp;The&nbsp;reference&nbsp;to&nbsp;the&nbsp;list&nbsp;in&nbsp;which&nbsp;received&nbsp;messages&nbsp;are&nbsp;stored</tt></dd></dl>
+
+<dl><dt><a name="Chatbox-get_port"><strong>get_port</strong></a>(self)</dt><dd><tt>Returns:<br>
+&nbsp;&nbsp;&nbsp;int.&nbsp;the&nbsp;port&nbsp;to&nbsp;which&nbsp;was&nbsp;connected&nbsp;at&nbsp;the&nbsp;remote&nbsp;machine&nbsp;(in&nbsp;client&nbsp;mode)&nbsp;or&nbsp;to&nbsp;which&nbsp;local&nbsp;machine&nbsp;listens&nbsp;to&nbsp;(in&nbsp;server&nbsp;mode)</tt></dd></dl>
+
+<dl><dt><a name="Chatbox-get_received_messages"><strong>get_received_messages</strong></a>(self)</dt><dd><tt>Returns:<br>
+&nbsp;&nbsp;&nbsp;list.&nbsp;A&nbsp;list&nbsp;of&nbsp;received&nbsp;messages&nbsp;(i.e.&nbsp;messages&nbsp;of&nbsp;which&nbsp;the&nbsp;origin&nbsp;!=&nbsp;"local")</tt></dd></dl>
+
+<dl><dt><a name="Chatbox-get_sent_messages"><strong>get_sent_messages</strong></a>(self)</dt><dd><tt>Returns:<br>
+&nbsp;&nbsp;&nbsp;list.&nbsp;A&nbsp;list&nbsp;of&nbsp;sent&nbsp;messages&nbsp;(i.e.&nbsp;messages&nbsp;of&nbsp;which&nbsp;the&nbsp;origin&nbsp;==&nbsp;"local")</tt></dd></dl>
+
+<dl><dt><a name="Chatbox-run"><strong>run</strong></a>(self)</dt><dd><tt>Keep&nbsp;listening&nbsp;for&nbsp;incoming&nbsp;messages&nbsp;and&nbsp;append&nbsp;them&nbsp;to&nbsp;messageList&nbsp;when&nbsp;received.<br>
+Main&nbsp;thread&nbsp;loop&nbsp;that&nbsp;should&nbsp;not&nbsp;be&nbsp;called&nbsp;directly,&nbsp;but&nbsp;through&nbsp;<a href="#Chatbox">Chatbox</a>.<a href="#Chatbox-start">start</a>()&nbsp;(inherited&nbsp;from&nbsp;<a href="threading.html#Thread">Thread</a>)<br>
+When&nbsp;the&nbsp;constructor&nbsp;is&nbsp;called,&nbsp;the&nbsp;run&nbsp;method&nbsp;is&nbsp;automatically&nbsp;invoked&nbsp;after&nbsp;a&nbsp;connection&nbsp;is&nbsp;established.</tt></dd></dl>
+
+<dl><dt><a name="Chatbox-send_message"><strong>send_message</strong></a>(self, message)</dt><dd><tt>Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;message&nbsp;(str):&nbsp;the&nbsp;message&nbsp;to&nbsp;send&nbsp;to&nbsp;the&nbsp;remote&nbsp;machine</tt></dd></dl>
+
+<dl><dt><a name="Chatbox-stop"><strong>stop</strong></a>(self)</dt><dd><tt>Stop&nbsp;listening&nbsp;for&nbsp;incoming&nbsp;messages,&nbsp;close&nbsp;the&nbsp;socket&nbsp;and&nbsp;kill&nbsp;the&nbsp;thread.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="threading.html#Thread">threading.Thread</a>:<br>
+<dl><dt><a name="Chatbox-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Chatbox-getName"><strong>getName</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Chatbox-isAlive"><strong>isAlive</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Chatbox-isDaemon"><strong>isDaemon</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Chatbox-is_alive"><strong>is_alive</strong></a> = isAlive(self)</dt></dl>
+
+<dl><dt><a name="Chatbox-join"><strong>join</strong></a>(self, timeout<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="Chatbox-setDaemon"><strong>setDaemon</strong></a>(self, daemonic)</dt></dl>
+
+<dl><dt><a name="Chatbox-setName"><strong>setName</strong></a>(self, name)</dt></dl>
+
+<dl><dt><a name="Chatbox-start"><strong>start</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="threading.html#Thread">threading.Thread</a>:<br>
+<dl><dt><strong>daemon</strong></dt>
+</dl>
+<dl><dt><strong>ident</strong></dt>
+</dl>
+<dl><dt><strong>name</strong></dt>
+</dl>
+<hr>
+Data descriptors inherited from <a href="threading.html#_Verbose">threading._Verbose</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-prepare"><strong>prepare</strong></a>(item)</dt></dl>
+ <dl><dt><a name="-run"><strong>run</strong></a>(item)</dt></dl>
+</td></tr></table>
+</body></html>
